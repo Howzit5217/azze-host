@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azzé Host Downloads</title>
+<meta name="description" content="Download Azzé Host for Windows, Chromebook and Linux: play your computer's music on your phone or tablet with Azzé.">
+<link rel="icon" type="image/png" href="azze-host.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #F2F3F5; --card: #FFFFFF; --raised: #E9EBEF; --edge: rgba(15, 23, 42, 0.10);
+    --text: #0F1115; --body: #2B3038; --hint: #5B6270; --blue: #3B82F6; --blue-text: #FFFFFF;
+    --green: #22C55E; --violet: #6366F1; --cyan: #06B6D4; --code: #EEF0F4; --shadow: 0 1px 2px rgba(15, 23, 42, .06), 0 8px 28px rgba(15, 23, 42, .06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page: #0B0D10; --card: #17191D; --raised: #202328; --edge: rgba(255, 255, 255, 0.08);
+      --text: #F5F6F8; --body: #D3D6DC; --hint: #9AA1AD; --code: #202328; --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page: #0B0D10; --card: #17191D; --raised: #202328; --edge: rgba(255, 255, 255, 0.08);
+    --text: #F5F6F8; --body: #D3D6DC; --hint: #9AA1AD; --code: #202328; --shadow: none;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--page); color: var(--body);
+    font: 400 16px/1.55 Manrope, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--blue); }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px 56px; }
+
+  header { text-align: center; padding: 56px 0 28px; }
+  header img { width: 96px; height: 96px; border-radius: 26px; display: block; margin: 0 auto 18px; }
+  h1 { margin: 0; color: var(--text); font-size: clamp(32px, 6vw, 44px); font-weight: 800; letter-spacing: -0.02em; }
+  .lead { margin: 10px auto 0; max-width: 560px; font-size: 18px; color: var(--hint); }
+
+  .hero { margin: 28px auto 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 12px 22px; border-radius: 16px;
+    font: 700 16px/1.2 Manrope, system-ui, sans-serif; text-decoration: none; border: 1px solid transparent; cursor: pointer;
+    transition: transform .15s ease, filter .15s ease, background-color .15s ease;
+  }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn.primary { background: var(--blue); color: var(--blue-text); }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn.quiet { background: var(--raised); color: var(--text); border-color: var(--edge); }
+  .btn.quiet:hover { filter: brightness(0.97); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.quiet:hover { filter: brightness(1.15); } }
+  .btn:active { transform: scale(0.98); }
+  .btn:focus-visible { outline: 3px solid color-mix(in srgb, var(--blue) 55%, transparent); outline-offset: 2px; }
+  .hero .note { font-size: 14px; color: var(--hint); }
+
+  h2 { color: var(--text); font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin: 44px 0 14px 6px; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--edge); border-radius: 28px; padding: 22px 22px 20px; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: 12px; min-width: 0;
+  }
+  .card.wide { grid-column: 1 / -1; }
+  .head { display: flex; align-items: center; gap: 14px; }
+  .mark { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex: none; color: #fff; }
+  .mark svg { width: 22px; height: 22px; }
+  .head h3 { margin: 0; color: var(--text); font-size: 19px; font-weight: 700; }
+  .head p { margin: 2px 0 0; font-size: 14px; color: var(--hint); }
+  .card p { margin: 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .links .btn { font-size: 15px; min-height: 44px; padding: 10px 16px; }
+  .size { font-weight: 500; opacity: .75; }
+  ol { margin: 0; padding-left: 22px; }
+  ol li { margin: 4px 0; }
+  ol li::marker { color: var(--blue); font-weight: 800; }
+  code {
+    font: 500 14px/1.5 ui-monospace, "Cascadia Mono", Consolas, monospace; background: var(--code); border-radius: 8px; padding: 2px 6px;
+    overflow-wrap: anywhere;
+  }
+  pre { margin: 0; background: var(--code); border-radius: 14px; padding: 12px 14px; overflow-x: auto; }
+  pre code { background: none; padding: 0; }
+  .small { font-size: 14px; color: var(--hint); }
+  .badge { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #B98900; margin-left: 6px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .badge { color: #E0A800; } }
+  .recommended { outline: 2px solid var(--blue); outline-offset: -1px; }
+  footer { margin-top: 44px; text-align: center; font-size: 14px; color: var(--hint); }
+  footer p { margin: 4px 0; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:active { transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="azze-host.png" alt="" width="96" height="96">
+    <h1>Azzé Host</h1>
+    <p class="lead">Play the music on your computer with Azzé on your phone, tablet or Chromebook: at home over Wi-Fi, and from anywhere with Azzé Premium.</p>
+    <div class="hero" id="hero">
+      <a class="btn primary" id="heroButton" href="#downloads">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 4h2v9.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V4zM5 19h14v2H5z"/></svg>
+        <span id="heroLabel">Choose a download</span>
+      </a>
+      <span class="note" id="heroNote">Free. No account needed on the computer.</span>
+    </div>
+  </header>
+
+  <h2 id="downloads">Downloads</h2>
+  <div class="grid">
+
+    <section class="card" id="card-windows" aria-labelledby="t-windows">
+      <div class="head">
+        <span class="mark" style="background: var(--blue)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5.5 10.5 4.4v7.1H3V5.5zm8.5-1.25L21 3v8.5h-9.5V4.25zM3 12.5h7.5v7.1L3 18.5v-6zm8.5 0H21V21l-9.5-1.25V12.5z"/></svg></span>
+        <div><h3 id="t-windows">Windows</h3><p>Windows 10 and 11, 64-bit (ARM PCs too)</p></div>
+      </div>
+      <div class="links">
+        <a class="btn primary" data-file="Azze-Setup.exe" href="https://github.com/Howzit5217/azze-host/releases/latest/download/Azze-Setup.exe">Azze-Setup.exe <span class="size" data-size="Azze-Setup.exe"></span></a>
+      </div>
+      <p class="small">Installs for you only, with no administrator needed. If Windows SmartScreen asks, choose More info, then Run anyway.</p>
+    </section>
+
+    <section class="card" id="card-chromebook" aria-labelledby="t-chromebook">
+      <div class="head">
+        <span class="mark" style="background: var(--green)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 5h16a1 1 0 0 1 1 1v10H3V6a1 1 0 0 1 1-1zm1 2v7h14V7H5zM1 17h22v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1z"/></svg></span>
+        <div><h3 id="t-chromebook">Chromebook</h3><p>With Linux turned on</p></div>
+      </div>
+      <div class="links">
+        <a class="btn primary" data-file="azze-host-amd64.deb" href="https://github.com/Howzit5217/azze-host/releases/latest/download/azze-host-amd64.deb">Intel or AMD <span class="size" data-size="azze-host-amd64.deb"></span></a>
+        <a class="btn quiet" data-file="azze-host-arm64.deb" href="https://github.com/Howzit5217/azze-host/releases/latest/download/azze-host-arm64.deb">ARM <span class="size" data-size="azze-host-arm64.deb"></span></a>
+      </div>
+      <ol>
+        <li>Turn on Linux: Settings › About ChromeOS › Developers › Linux development environment.</li>
+        <li>Download the package for your Chromebook. This page picks the right one when you open it on the Chromebook.</li>
+        <li>Open it in the Files app and choose Install. Azzé Host appears in the Launcher, under Linux apps.</li>
+        <li>Let your devices reach it: in the same Linux settings, open Port forwarding and add <code>TCP 47379</code>, <code>TCP 47380</code>, <code>UDP 47380</code> and <code>TCP 47381</code>. Then type the Chromebook's Wi-Fi address in Azzé Host's Settings.</li>
+      </ol>
+    </section>
+
+    <section class="card wide" id="card-linux" aria-labelledby="t-linux">
+      <div class="head">
+        <span class="mark" style="background: var(--violet)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 4v10h16V8H4zm2.5 2.2 1.4-1.4 3.6 3.6-3.6 3.6-1.4-1.4 2.2-2.2-2.2-2.2zM12 15h6v2h-6v-2z"/></svg></span>
+        <div><h3 id="t-linux">Linux</h3><p>64-bit Intel or AMD, and ARM</p></div>
+      </div>
+      <p><strong>Debian, Ubuntu, Linux Mint, Pop!_OS and others that use .deb:</strong></p>
+      <div class="links">
+        <a class="btn primary" data-file="azze-host-amd64.deb" href="https://github.com/Howzit5217/azze-host/releases/latest/download/azze-host-amd64.deb">.deb for Intel or AMD <span class="size" data-size="azze-host-amd64.deb"></span></a>
+        <a class="btn quiet" data-file="azze-host-arm64.deb" href="https://github.com/Howzit5217/azze-host/releases/latest/download/azze-host-arm64.deb">.deb for ARM <span class="size" data-size="azze-host-arm64.deb"></span></a>
+      </div>
+      <pre><code>sudo apt install ./azze-host-amd64.deb</code></pre>
+      <p><strong>Any other Linux:</strong> unpack it anywhere and run it. Nothing else to install.</p>
+      <div class="links">
+        <a class="btn quiet" data-file="azze-host-linux-x64.tar.gz" href="https://github.com/Howzit5217/azze-host/releases/latest/download/azze-host-linux-x64.tar.gz">.tar.gz for Intel or AMD <span class="size" data-size="azze-host-linux-x64.tar.gz"></span></a>
+        <a class="btn quiet" data-file="azze-host-linux-arm64.tar.gz" href="https://github.com/Howzit5217/azze-host/releases/latest/download/azze-host-linux-arm64.tar.gz">.tar.gz for ARM <span class="size" data-size="azze-host-linux-arm64.tar.gz"></span></a>
+      </div>
+      <pre><code>tar -xzf azze-host-linux-x64.tar.gz
+./azze-host/bin/azze-host</code></pre>
+    </section>
+
+    <section class="card wide" id="card-android" aria-labelledby="t-android">
+      <div class="head">
+        <span class="mark" style="background: var(--cyan)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 3v13h10V5H7zm4 14.5a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/></svg></span>
+        <div><h3 id="t-android">Azzé for Android</h3><p>The app that plays it: phones, tablets and Chromebooks</p></div>
+      </div>
+      <p>Azzé Host shares the music. Azzé plays it: open Settings › Library › Computers &amp; Servers, then Scan QR Code, and scan the code Azzé Host shows in Pair a Device. With Azzé Premium, the computer's music plays away from home too.</p>
+      <div class="links">
+        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.music.azze">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.6 2.3 13.9 11.6 4.6 20.9a1.6 1.6 0 0 1-.6-1.3V3.6c0-.5.2-1 .6-1.3zm10.4 10.4 2.5 2.5-11 6.3 8.5-8.8zm0-2.2L6.5 1.7l11 6.3-2.5 2.5zm3.5-1.9 3 1.7c.9.5.9 1.8 0 2.3l-3 1.7-2.8-2.8 2.8-2.9z"/></svg>
+          Get it on Google Play
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <h2>Choose What Each Device Gets</h2>
+  <div class="card">
+    <p>Every device you pair can have its own music. In Azzé Host, open Settings, find the device and choose Choose Music: keep All Music on, or turn on just the albums and tracks you want. The device picks up the new list by itself.</p>
+  </div>
+
+  <footer>
+    <p>Azzé Host isn't available for Mac.</p>
+    <p><span id="version">Version 1.0.0</span> · <a href="https://github.com/Howzit5217/azze-host/releases">All releases</a></p>
+    <p>© 2026 Azzé</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var base = "https://github.com/Howzit5217/azze-host/releases/latest/download/";
+  var ua = navigator.userAgent || "";
+  var os = /CrOS/.test(ua) ? "chromeos" : /Windows/.test(ua) ? "windows" : /Android/.test(ua) ? "android"
+    : /Linux/.test(ua) ? "linux" : /Macintosh|Mac OS X/.test(ua) ? "mac" : "other";
+  // ARM or Intel/AMD: the browser's own answer when it gives one, else the user agent's.
+  var arm = /aarch64|arm64|armv\d/i.test(ua);
+  function pick(isArm) {
+    var label = document.getElementById("heroLabel");
+    var hero = document.getElementById("heroButton");
+    var note = document.getElementById("heroNote");
+    var deb = isArm ? "azze-host-arm64.deb" : "azze-host-amd64.deb";
+    if (os === "windows") {
+      hero.href = base + "Azze-Setup.exe"; label.textContent = "Download for Windows";
+      document.getElementById("card-windows").classList.add("recommended");
+    } else if (os === "chromeos") {
+      hero.href = base + deb; label.textContent = "Download for Chromebook" + (isArm ? " (ARM)" : "");
+      note.textContent = "Turn on Linux first: the steps are below.";
+      document.getElementById("card-chromebook").classList.add("recommended");
+    } else if (os === "linux") {
+      hero.href = base + deb; label.textContent = "Download for Linux (.deb" + (isArm ? ", ARM" : "") + ")";
+      document.getElementById("card-linux").classList.add("recommended");
+    } else if (os === "android") {
+      hero.href = "https://play.google.com/store/apps/details?id=com.music.azze"; label.textContent = "Get Azzé on Google Play";
+      note.textContent = "Azzé Host itself runs on a Windows, Linux or Chromebook computer.";
+      document.getElementById("card-android").classList.add("recommended");
+    } else if (os === "mac") {
+      hero.style.display = "none";
+      note.textContent = "Azzé Host isn't available for Mac. It runs on Windows, Chromebook and Linux.";
+    }
+  }
+  pick(arm);
+  if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+    navigator.userAgentData.getHighEntropyValues(["architecture"]).then(function (v) {
+      if (v && v.architecture) pick(v.architecture === "arm");
+    }).catch(function () {});
+  }
+  // The real sizes and version, from the latest release (left blank when GitHub can't be asked).
+  fetch("https://api.github.com/repos/Howzit5217/azze-host/releases/latest").then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (rel) {
+      if (!rel) return;
+      if (rel.tag_name) document.getElementById("version").textContent = "Version " + rel.tag_name.replace(/^v/, "");
+      (rel.assets || []).forEach(function (a) {
+        var mb = Math.round(a.size / 1048576);
+        document.querySelectorAll('[data-size="' + a.name + '"]').forEach(function (el) { el.textContent = "· " + mb + " MB"; });
+      });
+    }).catch(function () {});
+})();
+</script>
+</body>
+</html>
